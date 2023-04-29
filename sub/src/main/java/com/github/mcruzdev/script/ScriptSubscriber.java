@@ -19,7 +19,7 @@ public class ScriptSubscriber {
     private static final Logger LOGGER = LoggerFactory.getLogger(ScriptSubscriber.class);
 
     @PostMapping("/script")
-    @Topic(pubsubName = "pubsub", name = "script")
+    @Topic(pubsubName = "pubsub", name = "users")
     @ResponseStatus(HttpStatus.OK)
     public void handle(@RequestBody CloudEvent<String> event) {
         LOGGER.info("handling event data: {}", event.getData());
