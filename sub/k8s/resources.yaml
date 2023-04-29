@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: script
+  name: sub
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: script
+      app: sub
   template:
     metadata:
       labels:
-        app: script
+        app: sub
       annotations:
         dapr.io/enabled: "true"
-        dapr.io/app-id: script
+        dapr.io/app-id: "sub"
         dapr.io/app-port: "8080"
     spec:
       containers:
-      - name: script
-        image: matheuscruzdev/script:{{ .Values.image.tag }}
+      - name: "sub"
+        image: matheuscruzdev/sub:0.1.0
         resources:
           limits:
             memory: "128Mi"
@@ -29,10 +29,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: script
+  name: sub
 spec:
   selector:
-    app: script
+    app: sub
   ports:
   - port: 8080
     targetPort: 8080

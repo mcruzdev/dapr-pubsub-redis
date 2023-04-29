@@ -1,26 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appName }}
+  name: pub
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      app: pub
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
+        app: pub
       annotations:
-{{- if .Values.annotations.disable -}}
         dapr.io/enabled: "true"
-        dapr.io/app-id: "{{ .Values.appName }}"
+        dapr.io/app-id: "pub"
         dapr.io/app-port: "8080"
-{{- end -}}
     spec:
       containers:
-      - name: "{{ .Values.appName }}"
-        image: matheuscruzdev/{{ .Values.appName }}:{{ .Values.image.tag }}
+      - name: "pub"
+        image: matheuscruzdev/pub:0.1.0
         resources:
           limits:
             memory: "128Mi"
@@ -31,10 +29,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.appName }}
+  name: pub
 spec:
   selector:
-    app: {{ .Values.appName }}
+    app: pub
   ports:
   - port: 8080
     targetPort: 8080
