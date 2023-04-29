@@ -1,3 +1,4 @@
+appName: pub
 image:
   tag: 0.1.0
 annotations:
