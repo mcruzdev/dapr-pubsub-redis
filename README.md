@@ -6,7 +6,7 @@
 ```sh
     cd pub
     ./gradlew clean build
-    docker build . --tag=USERNAME_HERE/pub:0.1.0  
+    docker build . --tag=matheuscruzdev/pub:0.1.0  
     cd ..      
 ```
 
@@ -14,15 +14,15 @@
 ```sh
     cd sub
     ./gradlew clean build
-    docker build . --tag=USERNAME_HERE/sub:0.1.0
+    docker build . --tag=matheuscruzdev/sub:0.1.0
     cd ..
 ```
 
 ### 3. Publish docker images
 
 ```sh
-    docker push USERNAME_HERE/pub:0.1.0
-    docker push USERNAME_HERE/sub:0.1.0
+    docker push matheuscruzdev/pub:0.1.0
+    docker push matheuscruzdev/sub:0.1.0
 ```
 
 ### 4. Create kind cluster
@@ -64,8 +64,8 @@ helm upgrade --install \
 ### 7. Add apps
 
 ```sh
-    kubectl -f pub/k8s/resources.yaml
-    kubectl -f sub/k8s/resources.yaml
+    kubectl apply -f pub/k8s/resources.yaml
+    kubectl apply -f sub/k8s/resources.yaml
 ```
 
 ### 8. Add dapr-ambient for each apps
