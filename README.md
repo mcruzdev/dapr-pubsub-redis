@@ -25,19 +25,12 @@
     docker push USERNAME_HERE/sub:0.1.0
 ```
 
-### 4. Package helm chart
-
-```sh
-    helm package pub/chart/
-    helm package sub/chart/
-```
-
-### 5. Create kind cluster
+### 4. Create kind cluster
 ```sh
     kind create cluster dapr
 ```
 
-### 6. Add dapr and redis
+### 5. Add dapr and redis
 
 ```shell
 
@@ -62,8 +55,22 @@ helm upgrade --install \
     --wait
 ```
 
-### 7. Apply dapr component
+### 6. Apply dapr component
 
 ```sh
     kubectl apply --filename dapr-component.yaml
+```
+
+### 7. Add apps
+
+```sh
+    kubectl -f pub/k8s/resources.yaml
+    kubectl -f sub/k8s/resources.yaml
+```
+
+### 8. Add dapr-ambient for each apps
+
+```sh
+    helm install sub-ambient . --set ambient.appId=pub --set ambient.proxy.remoteURL=pub:8080 
+    helm install pub-ambient . --set ambient.appId=sub --set ambient.proxy.remoteURL=sub:8080
 ```
