@@ -28,7 +28,7 @@ If you want to use directly my docker images, jump to the step [four](#4-create-
 
 ### 4. Create kind cluster
 ```sh
-    kind create cluster dapr
+    kind create cluster --name dapr
 ```
 
 ### 5. Add dapr and redis
