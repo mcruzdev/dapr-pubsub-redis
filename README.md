@@ -1,5 +1,6 @@
 # dapr-pubsub
 
+If you want to use directly my docker images, jump to the step [four](#4-create-kind-cluster).
 
 ### 1. Packaging pub application
 
@@ -58,7 +59,7 @@ helm upgrade --install \
 ### 6. Apply dapr component
 
 ```sh
-    kubectl apply --filename dapr-component.yaml
+    kubectl apply --filename redis-dapr.yaml
 ```
 
 ### 7. Add apps

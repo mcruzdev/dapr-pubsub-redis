@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("/")
-public class ScriptSubscriber {
+public class Controller {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ScriptSubscriber.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Controller.class);
 
     @PostMapping("/users")
     @Topic(pubsubName = "pubsub", name = "users")
