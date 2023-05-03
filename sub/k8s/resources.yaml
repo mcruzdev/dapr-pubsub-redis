@@ -12,7 +12,6 @@ spec:
       labels:
         app: sub
       annotations:
-        dapr.io/enabled: "true"
         dapr.io/app-id: "sub"
         dapr.io/app-port: "8080"
     spec:
